@@ -3,24 +3,12 @@ var fs = require('fs');
 var http = require("http").Server(app);
 var io = require('socket.io')(http);
 
-// var play = require('audio-play')
-// var load = require('audio-loader')
-// var lenaMp3 = require('audio-lena/mp3')
-// var path = require('path')
-
 var players = {};
 var adminSocket = null;
 var curGame = "";
 var curGameWords = "";
 var timeup = true;
 var buzzed = false;
-
-// load(path.join(__dirname, '/buzzer.mp3')).then(function(buffer){
-// 	sounds.push(buffer);
-// }).catch(function(){
-// 	console.log("Couldnt load buzzer");
-// });
-
 
 app.get("/", function(req, res) {
 	res.sendFile(__dirname+'/index.html');
@@ -99,6 +87,6 @@ io.on("connection", function(socket){
 	});
 });
 
-http.listen(3000, function(){
+http.listen(3000, "https://thirtyseconds-server.herokuapp.com", function(){
 	console.log("Server is listening.");
 });
