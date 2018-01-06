@@ -1,13 +1,20 @@
 {
-  "name": "denty",
+  "name": "Thirty Seconds",
+  "description": "Simple game server",
   "version": "1.0.0",
-  "description": "Denty web server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+  "engines" : {
+    "node": "8.9.3"
+  },
+  "repository":{
+    "type": "git",
+    "url" : "https://github.com/jesstrux/thirty-seconds-server.git"
+  },
   "dependencies": {
     "audio-lena": "^2.1.1",
     "audio-play": "^2.2.0",

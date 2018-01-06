@@ -1,0 +1,8 @@
+{
+  "name": "Thirty Seconds",
+  "description": "Simple game server",
+  "repository": "https://github.com/jesstrux/thirty-seconds-server.git",
+  "keywords": [],
+  "logo" : "",
+  "image" : "heroku/nodejs"
+}

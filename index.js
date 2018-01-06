@@ -22,9 +22,9 @@ var buzzed = false;
 // });
 
 
-// app.get("/", function(req, res) {
-// 	res.sendFile(__dirname+'/index.html');
-// });
+app.get("/", function(req, res) {
+	res.sendFile(__dirname+'/index.html');
+});
 
 io.on("connection", function(socket){
 	console.log("A user connected: " + socket.id);
