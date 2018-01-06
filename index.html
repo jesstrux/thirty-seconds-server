@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Denty Server</title>
+	<script src="/socket.io/socket.io.js"></script>
+	<style>
+		#container img, p{
+			margin-bottom: 12px;
+		}
+
+		#container img{
+			width: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div style="padding: 40px;">
+		<h1>
+			Gamer Admin
+		</h1>
+		<p>
+			<strong>Current Question: </strong>
+			<span id="questionText" style="font-size: 20px;">
+				No current quesion.
+			</span>
+			<br><br>
+			<button id="closeQuestionBtn" disabled onclick="closeQuestion()">
+				CLOSE QUESTION
+			</button>
+		</p>
+		<br>
+
+		<textarea placeholder="Enter question" id="messageBox" rows="5" style="width: 400px; display: block; margin-bottom: 16px;"></textarea>
+
+		<button onclick="sendQuestion()">SEND QUESTION</button>
+	</div>
+
+	<script>
+		var socket = io.connect();
+		var input = document.getElementById("messageBox");
+		var audioBuzzer = document.getElementById("buzzerAudio");
+		var questionText = document.getElementById("questionText");
+		var closeQuestionBtn = document.getElementById("closeQuestionBtn");
+
+		socket.on("play_buzzer", function(){
+			audioBuzzer.pause();
+			audioBuzzer.currentTime = 0;
+			audioBuzzer.play();
+		});
+
+		function sendQuestion(){
+			var qsn = input.value;
+			closeQuestionBtn.removeAttribute("disabled");
+
+			socket.emit("new_qsn", qsn);
+			questionText.innerText = qsn;
+
+			input.value = "";
+		}
+
+		function closeQuestion(){
+			socket.emit("close_qsn");
+			qsn = "";
+			questionText.innerText = "No current quesion.";
+			closeQuestionBtn.setAttribute("disabled", "disabled");
+		}
+	</script>
+</body>
+</html>
