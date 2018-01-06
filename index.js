@@ -87,6 +87,6 @@ io.on("connection", function(socket){
 	});
 });
 
-http.listen(3000, "https://thirtyseconds-server.herokuapp.com", function(){
+http.listen(3000, "localhost", function(){
 	console.log("Server is listening.");
 });
